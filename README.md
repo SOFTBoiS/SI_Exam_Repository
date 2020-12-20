@@ -1,4 +1,10 @@
 # SI Exam Project
+## Made by
+Adam Saidane as410
+Emil Valbak Hermansen eh108
+Sebastian Lundsgaard-Larsen sl281
+
+
 ## Links to the project repositories
 [Monolithic flight application](https://github.com/SOFTBoiS/SI_Exam_Monolithic_Flight_Application)
 [Eureka Server](https://github.com/SOFTBoiS/SI_MP_4_Eureka_Server)
@@ -61,7 +67,8 @@ Estimating load balancing can be hard. Our initial thoughts are that since the t
 
 However, if car-gateway calls were async, it wouldn't have to wait on each response from the other applications and therefore the gateway would be less busy. Suddenly load balancing would be more focused on on the microservices related to car gateway. You would have to look at metrics about which one has the highest load, longer response times etc. since not all requests are equal.
 
-
+### Logging
+We implemented logging functionality in the Java Spring Boot framework. By default it logs every level, but in production you should increase the logging level to reduce the amount of writes to the logging file. These logs are saved to the spring.log file in the root path. An example can be seen in the Car_gateWay microservice in the OrderSearchController in the POST "/orders/" endpoint. 
 
 ## Analytics
 This microservice makes analytics of the kafka logs that contains car and flight search history. We think a good application to use this stream would be to use the log once a day, week or month to analyze that and save the aggregated data. This can be used for business intelligence, so you can make business and marketing decisions based on the aggregated data. We use the stream as a sort of database of search history from the last 1 month. Ideally we would then make analytics and persist the aggregated data to a database, which can be used later on for business intelligence on when to send out targeted ads.
